@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <span class="logo">
+    <mat-icon>library_books</mat-icon>
+    <span class="title">Book Manager</span>
+  </span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+  <button mat-button [matMenuTriggerFor]="booksMenu">
+    <mat-icon>book</mat-icon>
+    Books
+  </button>
+  <mat-menu #booksMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>list</mat-icon>
+      <span>All Books</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>add</mat-icon>
+      <span>Add Book</span>
+    </button>
+  </mat-menu>
+  <button mat-button>
+    <mat-icon>info</mat-icon>
+    About
+  </button>
+</mat-toolbar>

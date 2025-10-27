@@ -1,0 +1,36 @@
+.home-container {
+  h2 {
+    margin-bottom: 2rem;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 400;
+  }
+  
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .selected-book {
+    margin-top: 2rem;
+    padding: 1rem;
+    
+    mat-chip-set {
+      justify-content: center;
+    }
+    
+    mat-chip {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    .books-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

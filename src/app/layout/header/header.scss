@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+mat-toolbar {
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  button {
+    margin-left: 0.5rem;
+    
+    mat-icon {
+      margin-right: 0.25rem;
+    }
+  }
+}
