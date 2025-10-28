@@ -2,18 +2,8 @@
   <h2>Book List</h2>
 
   <div class="books-grid">
-    @for(book of books; track book.id) {
-      <app-book-card [book]="book" (onSelect)="onBookSelected($event)"></app-book-card>
+    @for(book of books(); track book.id) {
+      <app-book-card [book]="book"></app-book-card>
     }
   </div>
-
-  @if (selectedBook) {
-    <div class="selected-book">
-      <mat-chip-set>
-        <mat-chip highlighted>
-          Selected Book: {{ selectedBook.title }}
-        </mat-chip>
-      </mat-chip-set>
-    </div>
-  }
 </div>

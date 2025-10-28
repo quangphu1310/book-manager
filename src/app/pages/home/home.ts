@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { BookCardComponent } from '../book-card/book-card';
 import { MatChipsModule } from '@angular/material/chips';
+import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +11,8 @@ import { MatChipsModule } from '@angular/material/chips';
   styleUrl: './home.scss',
 })
 export class HomeComponent {
-  books = [
-    { id: 1, title: 'Clean Code', author: 'Robert C. Martin' },
-    { id: 2, title: 'The Pragmatic Programmer', author: 'Andrew Hunt' },
-    { id: 3, title: 'You Don\'t Know JS', author: 'Kyle Simpson' }
-  ];
 
-  selectedBook: any = null;
-
-  onBookSelected(book: any) {
-    this.selectedBook = book;
-  }
+  private bookService = inject(BookService);
+  
+  readonly books = computed(() => this.bookService.getBooks());
 }

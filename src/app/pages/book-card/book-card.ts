@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, computed, input, Input} from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { BookListItem } from '../../core/models/book.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-card',
@@ -10,10 +12,12 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './book-card.scss',
 })
 export class BookCardComponent {
-  @Input() book: any;
-  @Output() onSelect = new EventEmitter<any>();
+  book = input.required<BookListItem>();
+  id = computed(() => this.book().id);
+  
+  constructor(private router: Router) {}
 
   selectBook() {
-    this.onSelect.emit(this.book); // Emit the selected book
+    this.router.navigate(['/book', this.id()]);
   }
 }
