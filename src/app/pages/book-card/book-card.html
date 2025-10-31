@@ -1,14 +1,14 @@
 <mat-card>
-  @if (book.thumbnailUrl) {
-    <img mat-card-image [src]="book.thumbnailUrl" [alt]="book.title">
+  @if (book().thumbnailUrl) {
+    <img mat-card-image [src]="book().thumbnailUrl" [alt]="book().title">
   }
   <mat-card-header>
-    <mat-card-title>{{ book.title }}</mat-card-title>
-    <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+    <mat-card-title>{{ book().title }}</mat-card-title>
+    <mat-card-subtitle>{{ book().author }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p><strong>Year:</strong> {{ book.year }}</p>
-    <p><strong>Price:</strong> ${{ book.price }}</p>
+    <p><strong>Year:</strong> {{ book().year }}</p>
+    <p><strong>Price:</strong> ${{ book().price }}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary" (click)="selectBook()">Select</button>

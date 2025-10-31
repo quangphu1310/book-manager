@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -20,7 +21,14 @@ export class BookDetailComponent {
 
   id = signal(Number(this.route.snapshot.paramMap.get('id')));
   book = computed(() => this.bookService.getBookById(this.id()));
+  private cartService = inject(CartService);
 
+  addToCart() {
+    const currentBook = this.book();
+    if (currentBook) {
+      this.cartService.addToCart(currentBook, 1);
+    }
+  }
   constructor() {
     effect(() => {
       if (!this.book()) {

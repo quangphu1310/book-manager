@@ -4,6 +4,10 @@
     <span class="title">Book Manager</span>
   </span>
   <span class="spacer"></span>
+  <button mat-icon-button routerLink="/cart" aria-label="View cart">
+  <mat-icon>shopping_cart</mat-icon>
+  <span class="cart-count">{{ cart.totalCount() }}</span>
+</button>
   <button mat-button routerLink="/">
     <mat-icon>home</mat-icon>
     Home

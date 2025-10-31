@@ -1,0 +1,81 @@
+<div class="cart-container">
+  <div class="cart-header">
+    <h1>Shopping Cart</h1>
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  @if (items().length === 0) {
+    <div class="empty-cart">
+      <mat-icon>shopping_cart</mat-icon>
+      <h2>Your cart is empty</h2>
+      <p>Add some books to your cart</p>
+      <button mat-raised-button color="primary" (click)="goBack()">
+        Continue Shopping
+      </button>
+    </div>
+  } @else {
+    <div class="cart-content">
+      <div class="cart-items">
+        @for (item of items(); track item.book.id) {
+          <mat-card class="cart-item">
+            <div class="item-image">
+              <img [src]="item.book.thumbnailUrl" [alt]="item.book.title">
+            </div>
+            
+            <div class="item-info">
+              <h3>{{ item.book.title }}</h3>
+              <p class="author">{{ item.book.author }}</p>
+              <p class="price">{{ item.book.price | currency:'VND' }}</p>
+            </div>
+
+            <div class="item-actions">
+              <div class="quantity-control">
+                <button mat-icon-button (click)="decreaseQuantity(item.book.id)">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <span class="quantity">{{ item.quantity }}</span>
+                <button mat-icon-button (click)="increaseQuantity(item.book.id)">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+
+              <p class="subtotal">
+                {{ (item.book.price * item.quantity) | currency:'VND' }}
+              </p>
+
+              <button mat-icon-button color="warn" (click)="removeItem(item.book.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-card>
+        }
+      </div>
+
+      <div class="cart-summary">
+        <mat-card>
+          <h2>Order Summary</h2>
+          
+          <div class="summary-row">
+            <span>Total Quantity:</span>
+            <span>{{ totalCount() }} items</span>
+          </div>
+
+          <div class="summary-row total">
+            <span>Total Price:</span>
+            <span>{{ totalPrice() | currency:'VND' }}</span>
+          </div>
+
+          <button mat-raised-button color="primary" class="checkout-btn">
+            Checkout
+          </button>
+
+          <button mat-stroked-button color="warn" (click)="clearCart()" class="clear-btn">
+            Clear Cart
+          </button>
+        </mat-card>
+      </div>
+    </div>
+  }
+</div>
