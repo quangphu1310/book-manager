@@ -50,4 +50,8 @@ export class CartComponent {
   goBack() {
     this.router.navigate(['/']);
   }
+
+  goToCheckout() {
+    this.router.navigate(['/checkout']);
+  }
 }

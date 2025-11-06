@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Order Details</h2>
+
+<mat-dialog-content class="mat-typography">
+  <div class="order-info">
+    <p><strong>Order ID:</strong> {{ data.order.id }}</p>
+    <p><strong>Date:</strong> {{ data.order.orderDate | date:'short' }}</p>
+    <p><strong>Status:</strong> {{ data.order.status | uppercase }}</p>
+    
+    <h3>Customer</h3>
+    <div class="section">
+      <p><strong>Name:</strong> {{ data.order.customerInfo.fullName }}</p>
+      <p><strong>Phone:</strong> {{ data.order.customerInfo.phone }}</p>
+    </div>
+    
+    <h3>Shipping Address</h3>
+    <div class="section">
+      <p>{{ data.order.shippingAddress.street }}</p>
+      <p>{{ data.order.shippingAddress.district }}, {{ data.order.shippingAddress.city }}</p>
+    </div>
+    
+    <h3>Items</h3>
+    @for (item of data.order.items; track item.book.id) {
+      <div class="item">
+        <span class="item-title">{{ item.book.title }}</span>
+        <span class="item-qty">x{{ item.quantity }}</span>
+        <span class="item-price">${{ (item.book.price * item.quantity).toFixed(2) }}</span>
+      </div>
+    }
+    
+    <div class="total">
+      <span>Total</span>
+      <span>${{ data.order.totalAmount.toFixed(2) }}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -5,13 +5,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, RouterLink],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, RouterLink, MatBadgeModule],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
 export class HeaderComponent {
   cart = inject(CartService);
+  order = inject(OrderService);
 }

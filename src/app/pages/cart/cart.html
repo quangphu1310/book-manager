@@ -27,7 +27,7 @@
             <div class="item-info">
               <h3>{{ item.book.title }}</h3>
               <p class="author">{{ item.book.author }}</p>
-              <p class="price">{{ item.book.price | currency:'VND' }}</p>
+              <p class="price">${{ item.book.price }}</p>
             </div>
 
             <div class="item-actions">
@@ -42,7 +42,7 @@
               </div>
 
               <p class="subtotal">
-                {{ (item.book.price * item.quantity) | currency:'VND' }}
+                ${{ (item.book.price * item.quantity) }}
               </p>
 
               <button mat-icon-button color="warn" (click)="removeItem(item.book.id)">
@@ -64,10 +64,10 @@
 
           <div class="summary-row total">
             <span>Total Price:</span>
-            <span>{{ totalPrice() | currency:'VND' }}</span>
+            <span>${{ totalPrice() }}</span>
           </div>
 
-          <button mat-raised-button color="primary" class="checkout-btn">
+          <button mat-raised-button color="primary" class="checkout-btn" (click)="goToCheckout()">
             Checkout
           </button>
 

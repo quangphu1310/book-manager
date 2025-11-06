@@ -1,0 +1,30 @@
+<div class="success-container">
+  @if (order(); as orderData) {
+  <mat-card class="success-card">
+    <mat-icon class="success-icon">check_circle</mat-icon>
+    <h1>Order Placed Successfully!</h1>
+    <p class="order-id">
+      Order ID: <strong>{{ orderData.id }}</strong>
+    </p>
+
+    <mat-card-content>
+      <p>Thank you for your order, {{ orderData.customerInfo.fullName }}!</p>
+      <p>We've sent a confirmation email to {{ orderData.customerInfo.email }}</p>
+
+      <div class="order-details">
+        <h3>Order Summary</h3>
+        <p><strong>Total Amount:</strong> ${{ orderData.totalAmount }}</p>
+        <p><strong>Payment Method:</strong> {{ getPaymentMethodLabel(orderData.paymentMethod) }}</p>
+        <p><strong>Shipping Address:</strong> {{ formatAddress(orderData.shippingAddress) }}</p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="goHome()">
+        <mat-icon>home</mat-icon>
+        Continue Shopping
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>

@@ -1,59 +1,150 @@
-# BookManager
+# Book Manager 📚
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
+A modern online bookstore application built with Angular 20 and Angular Material.
 
-## Development server
+## Project Overview
 
-To start a local development server, run:
+Book Manager is a web application that allows users to:
+- Browse book catalog
+- View detailed book information
+- Add books to shopping cart
+- Manage cart (add, remove, adjust quantities)
+- Complete checkout process
+- View order history
+
+## Technologies Used
+
+- **Angular**: 20.3.0
+- **Angular Material**: 20.2.10 (UI Components)
+- **Angular CDK**: 20.2.10
+- **TypeScript**: 5.9.2
+- **RxJS**: 7.8.0
+- **SCSS**: Styling
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   └── models/          # Data models (Book, Cart, Checkout)
+│   ├── layout/              # Layout components
+│   │   ├── header/          # Header component
+│   │   └── footer/          # Footer component
+│   ├── pages/               # Feature pages
+│   │   ├── home/            # Home page - book catalog
+│   │   ├── book-detail/     # Book detail page
+│   │   ├── book-card/       # Book card component
+│   │   ├── cart/            # Shopping cart page
+│   │   ├── checkout/        # Checkout page
+│   │   ├── order-success/   # Order confirmation page
+│   │   └── my-order/        # Order management page
+│   └── services/            # Services
+│       ├── book.service.ts  # Book data management
+│       ├── cart.service.ts  # Cart management
+│       └── order.service.ts # Order management
+```
+
+## Key Features
+
+### 1. Book Management
+- Display book catalog with basic information
+- View book details (title, author, year, price)
+- Thumbnail image for each book
+
+### 2. Shopping Cart
+- Add books to cart
+- Adjust book quantities
+- Remove books from cart
+- Calculate total order value
+
+### 3. Checkout
+- Enter customer information
+- Confirm order
+- Order success confirmation page
+
+### 4. Order Management
+- View order history
+- View detailed order information
+
+## Installation and Running
+
+### Requirements
+- Node.js (version 18.x or higher)
+- npm or yarn
+
+### Installation
 
 ```bash
+# Clone repository
+git clone <repository-url>
+
+# Navigate to project directory
+cd book-manager
+
+# Install dependencies
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm start
+# or
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and navigate to `http://localhost:4200/`
 
-## Code scaffolding
+### Build for Production
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+```bash
+npm run build
+# or
+ng build
+```
 
+Build artifacts will be stored in the `dist/` directory
+
+### Run Unit Tests
+
+```bash
+npm test
+# or
+ng test
+```
+
+## Routes
+
+- `/` - Home page (book catalog)
+- `/book/:id` - Book details
+- `/cart` - Shopping cart
+- `/checkout` - Checkout page
+- `/order-success/:id` - Order confirmation
+- `/my-order` - My orders
+
+## Angular CLI
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
+
+### Code Scaffolding
+
+To generate a new component:
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+For a full list of available schematics:
 ```bash
 ng generate --help
 ```
 
-## Building
+## Documentation
 
-To build the project run:
+- [Angular Documentation](https://angular.dev)
+- [Angular Material](https://material.angular.io)
+- [Angular CLI](https://angular.dev/tools/cli)
 
-```bash
-ng build
-```
+## License
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is for educational purposes.

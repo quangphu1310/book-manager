@@ -1,0 +1,39 @@
+<mat-tab-group>
+  <mat-tab label="All">
+    <div class="orders-container">
+      @if (orders().length === 0) {
+      <p class="no-orders">No orders found</p>
+      } @else {
+      <ul class="orders-list">
+        @for (order of orders(); track order.id) {
+        <li class="order-item">
+          <div class="order-header">
+            <strong>Order ID:</strong> {{ order.id }}
+            <span class="order-status" [class]="'status-' + order.status">{{ order.status }}</span>
+          </div>
+          <div class="order-details">
+            <p><strong>Order Date:</strong> {{ order.orderDate | date : 'dd/MM/yyyy HH:mm' }}</p>
+            <p><strong>Total Amount:</strong> ${{ order.totalAmount }}</p>
+            <p><strong>Customer:</strong> {{ order.customerInfo.fullName }}</p>
+            <p><strong>Phone:</strong> {{ order.customerInfo.phone }}</p>
+            <p><strong>Payment Method:</strong> {{ order.paymentMethod }}</p>
+            <p>
+              <strong>Shipping Address:</strong> {{ order.shippingAddress.street }},
+              {{ order.shippingAddress.ward }}, {{ order.shippingAddress.district }},
+              {{ order.shippingAddress.city }}
+            </p>
+          </div>
+          <div class="order-actions">
+            <button mat-raised-button color="primary" (click)="viewDetails(order.id)">View Details</button>
+          </div>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+  </mat-tab>
+  <mat-tab label="Pending"> </mat-tab>
+  <mat-tab label="Processing"> </mat-tab>
+  <mat-tab label="Completed"> </mat-tab>
+  <mat-tab label="Cancelled"> </mat-tab>
+</mat-tab-group>
